@@ -1,34 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import React, { useState } from 'react'
+import { Select } from './Select'
+import { SelectOption } from './Select';
 
-function App() {
-  const [count, setCount] = useState(0)
+const options = [
+  { label: "First", value: 1 },
+  { label: "Second", value: 2 },
+  { label: "Third", value: 3 },
+  { label: "Fourth", value: 4 },
+  { label: "Fifth", value: 5 },
+  { label: "Sixth", value: 5 },
+  { label: "Seventh", value: 5 },
+  { label: "Eighth", value: 5 },
+  { label: "Ninth", value: 5 },
+  { label: "Tenth", value: 5 },
+  { label: "Eleventh", value: 5 },
+  { label: "Twelfth", value: 5 },
+  { label: "Thirteenth", value: 5 },
+  { label: "Fourteenth", value: 5 },
+  { label: "Fifteenth", value: 5 },
+  { label: "Sixteenth", value: 5 },
+]
 
+export default function App() {
+  const [value1, setValue1] = useState<SelectOption[]>([options[0]])
+  const [value2, setValue2] = useState<SelectOption | undefined>(options[0])
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div>
+      <Select
+        multiple
+        value={value1}
+        onChange={val => setValue1(val)}
+        options={options}
+      />
+      <br />
+      <Select
+        value={value2}
+        onChange={val => setValue2(val)}
+        options={options}
+      />
     </div>
   )
 }
-
-export default App
